@@ -212,7 +212,7 @@
           <div class="rest-chip">
             <svg class="rest-chip-icon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
             <span class="rest-chip-label">istirahat</span>
-            <span class="rest-chip-val" id="chip-istirahat">2 menit</span>
+            <span class="rest-chip-val" id="chip-istirahat">90 dtk</span>
           </div>
         </div>
         <div class="video-thumb" id="video-thumb">
@@ -262,7 +262,7 @@
       </div>
       <div class="selesai-body">
         <div class="selesai-title">Selesai!</div>
-        <div class="selesai-subtitle" id="selesai-subtitle">Latihan Senin · Upper A done ✓</div>
+        <div class="selesai-subtitle" id="selesai-subtitle">Latihan Rabu · Selesai ✓</div>
         <div class="alhamdulillah-wrap">
           <div class="alhamdulillah-line"></div>
           <div class="alhamdulillah">Alhamdulillah</div>
@@ -292,109 +292,84 @@
   const PROGRAM_YEAR = 2026, PROGRAM_MONTH = 8, MONTH_LABEL = "September";
 
   const WORKOUTS = [
-    { id: "senin",  day: "Senin",  focus: "Upper A", dates: [7, 14, 21, 28] },
-    { id: "rabu",   day: "Rabu",   focus: "Lower A", dates: [2, 9, 16, 23, 30] },
-    { id: "jumat",  day: "Jumat",  focus: "Upper B", dates: [4, 11, 18, 25] },
-    { id: "sabtu",  day: "Sabtu",  focus: "Lower B", dates: [5, 12, 19, 26] },
+    { id: "rabu",   day: "Rabu",   focus: "Pull",  dates: [2, 9, 16, 23, 30] },
+    { id: "jumat",  day: "Jumat",  focus: "Legs",  dates: [4, 11, 18, 25] },
+    { id: "minggu", day: "Minggu", focus: "Push",  dates: [6, 13, 20, 27] },
   ];
 
-  const SENIN_EXERCISES = [
+  const RABU_EXERCISES = [
     {
-      id: 1, name: "Flat Dumbbell Press", sets: 3, reps: 10, unit: "rep", ytId: "Gf65Yy0-wGI", isShorts: true, istirahat: "2 menit",
-      tujuan: "Pondasi kekuatan dan massa otot dada keseluruhan.",
-      kesalahan: "Siku membuka lebar 90° sejajar bahu — bikin cedera. Siku harus masuk membentuk sudut 45–60° dari tubuh."
+      id: 1, name: "Lat Pulldown", sets: 3, reps: 12, unit: "rep", ytId: "Z4zHIds5nDk", isShorts: false, istirahat: "90 dtk",
+      tujuan: "Melebarkan & menguatkan punggung, bantu tarik bahu ke belakang.",
+      kesalahan: "Menarik pakai badan (ayun ke belakang), bukan pakai otot punggung."
     },
     {
-      id: 2, name: "Lat Pulldown", sets: 3, reps: 12, unit: "rep", ytId: "Z4zHIds5nDk", isShorts: true, istirahat: "90 dtk",
-      tujuan: "Melebarkan punggung samping (V-Taper) agar kemeja pas di badan.",
-      kesalahan: "Mengayunkan badan ke belakang memakai momentum. Badan harus tetap tegak dan stabil."
+      id: 2, name: "Seated Cable Row", sets: 3, reps: 12, unit: "rep", ytId: "qD1WZ5pSuvk", isShorts: true, istirahat: "90 dtk",
+      tujuan: "Menebalkan otot punggung tengah, perbaiki postur bungkuk.",
+      kesalahan: "Punggung membulat saat menarik dan siku terlalu lebar ke luar."
     },
     {
-      id: 3, name: "Seated Face Pull", sets: 3, reps: 15, unit: "rep", ytId: "hyBmEmv03_U", isShorts: false, istirahat: "60–90 dtk",
-      tujuan: "Mengisolasi bahu belakang dan memperbaiki postur bahu bungkuk.",
-      kesalahan: "Beban terlalu berat hingga badan tertarik maju, atau bahu naik ke arah kuping. Duduk tegak dan kunci bahu di bawah."
+      id: 3, name: "Face Pull", sets: 3, reps: 15, unit: "rep", ytId: "hyBmEmv03_U", isShorts: false, istirahat: "60 dtk",
+      tujuan: "Menguatkan otot rear delt & upper back, target utama koreksi bahu.",
+      kesalahan: "Beban terlalu berat sampai gerakan jadi cepat/asal tarik."
     },
     {
-      id: 4, name: "Dumbbell Hammer Curl", sets: 3, reps: 12, unit: "rep", ytId: "8H5oWMNWWeQ", isShorts: true, istirahat: "60 dtk",
+      id: 4, name: "Dumbbell Hammer Curl", sets: 3, reps: 12, unit: "rep", ytId: "8H5oWMNWWeQ", isShorts: false, istirahat: "60 dtk",
       tujuan: "Menebalkan lengan bagian samping dan lengan bawah.",
       kesalahan: "Siku bergerak maju-mundur atau badan ikut mengayun. Siku wajib terkunci rapat di samping badan."
     },
   ];
 
-  const RABU_EXERCISES = [
-    {
-      id: 1, name: "Leg Press", sets: 3, reps: 10, unit: "rep", ytId: "_bkqGYB-fWI", isShorts: true, istirahat: "2 menit",
-      tujuan: "Melatih paha depan secara maksimal dengan punggung tersangga aman.",
-      kesalahan: "Menurunkan beban terlalu dalam sampai pantat terangkat dari kursi, atau meluruskan lutut sampai mengunci kaku."
-    },
-    {
-      id: 2, name: "Dumbbell Romanian Deadlift", sets: 3, reps: 12, unit: "rep", ytId: "hu3jRvTc_po", isShorts: true, istirahat: "2 menit",
-      tujuan: "Memperkuat paha belakang & bokong untuk menarik panggul ke posisi netral.",
-      kesalahan: "Punggung melengkung atau bungkuk saat menurunkan beban. Punggung wajib lurus, gerakan berpusat pada pinggul yang didorong ke belakang."
-    },
-    {
-      id: 3, name: "Standing Calf Raise Machine", sets: 3, reps: 15, unit: "rep", ytId: "30ygzcJw4v4", isShorts: false, istirahat: "60 dtk",
-      tujuan: "Melatih otot betis bagian luar agar berbentuk tajam dan atletis dari tampak belakang.",
-      kesalahan: "Gerakan memantul (bouncing) terlalu cepat di posisi bawah, atau lutut ikut menekuk saat menjinjit. Lutut wajib tetap lurus dan beri jeda 1 detik di bawah saat otot meregang."
-    },
-    {
-      id: 4, name: "Captain's Chair Knee Raise", sets: 3, reps: 12, unit: "rep", ytId: "Q-HRZLba_20", isShorts: true, istirahat: "60 dtk",
-      tujuan: "Melatih otot perut bawah secara vertikal untuk menarik panggul kembali lurus dan menetralkan posisi Anterior Pelvic Tilt (APT).",
-      kesalahan: "Hanya mengangkat lutut naik-turun menggunakan kekuatan otot lipatan paha (hip flexors). Agar otot perut bekerja, kamu harus menggulung panggul ke atas (bayangkan tulang ekor diarahkan ke depan) di akhir setiap gerakan naik. Jangan biarkan badan mengayun menggunakan momentum."
-    },
-  ];
-
   const JUMAT_EXERCISES = [
     {
-      id: 1, name: "Incline Dumbbell Press (30°)", sets: 3, reps: 10, unit: "rep", ytId: "8fXfwG4ftaQ", isShorts: true, istirahat: "2 menit",
-      tujuan: "Mengisi dada bagian atas agar kemeja terlihat bidang dan penuh.",
-      kesalahan: "Sudut kursi terlalu tinggi (>45°) sehingga beban pindah ke bahu depan, bukan dada atas."
+      id: 1, name: "Smith Machine Squat", sets: 3, reps: 10, unit: "rep", ytId: "iKCJCydYYrE", isShorts: true, istirahat: "2 menit",
+      tujuan: "Menguatkan otot kaki (quad, glute, hamstring) dengan pola lebih stabil.",
+      kesalahan: "Posisi kaki terlalu dekat bar — harus sedikit maju karena jalur gerak vertikal lurus."
     },
     {
-      id: 2, name: "Seated Cable Row", sets: 3, reps: 12, unit: "rep", ytId: "LyZH4UGdDTc", isShorts: true, istirahat: "90 dtk",
-      tujuan: "Menebalkan punggung tengah agar postur berdiri tegap.",
-      kesalahan: "Bahu ikut bungkuk ke depan saat melepaskan beban. Dada harus tetap tegak, rasakan belikat saling menjepit di belakang."
+      id: 2, name: "Romanian Deadlift", sets: 3, reps: 10, unit: "rep", ytId: "hu3jRvTc_po", isShorts: false, istirahat: "90 dtk",
+      tujuan: "Menguatkan hamstring & glute, bantu redakan pola pinggang.",
+      kesalahan: "Punggung membulat dan lutut terlalu ditekuk."
     },
     {
-      id: 3, name: "Seated Face Pull", sets: 3, reps: 15, unit: "rep", ytId: "hyBmEmv03_U", isShorts: false, istirahat: "60–90 dtk",
-      tujuan: "Menjaga frekuensi stimulasi bahu belakang agar perbaikan postur lebih cepat.",
-      kesalahan: "Kepala maju ke depan menjemput tali kabel. Kepala harus diam, tali yang ditarik ke arah dahi."
+      id: 3, name: "Leg Press", sets: 3, reps: 12, unit: "rep", ytId: "_bkqGYB-fWI", isShorts: false, istirahat: "2 menit",
+      tujuan: "Menguatkan quad & glute dengan beban lebih aman.",
+      kesalahan: "Lutut terlalu menekuk sampai punggung bawah terangkat dari sandaran."
     },
     {
-      id: 4, name: "Tricep Rope Pushdown", sets: 3, reps: 12, unit: "rep", ytId: "u36jNfqh8_U", isShorts: true, istirahat: "60 dtk",
-      tujuan: "Mengisolasi otot tricep agar lengan baju bagian belakang terisi padat.",
-      kesalahan: "Siku membuka ke samping atau ikut bergerak naik-turun. Siku harus diam dan menempel di sisi rusuk."
+      id: 4, name: "Cable Crunch", sets: 3, reps: 15, unit: "rep", ytId: "K2m0jj6RfYg", isShorts: false, istirahat: "60 dtk",
+      tujuan: "Menguatkan otot perut, bantu stabilkan pinggang saat berdiri.",
+      kesalahan: "Menarik pakai lengan/bahu, bukan pakai kontraksi perut."
     },
   ];
 
-  const SABTU_EXERCISES = [
+  const MINGGU_EXERCISES = [
     {
-      id: 1, name: "Hack Squat", sets: 3, reps: 10, unit: "rep", ytId: "dJcCdRH_2i8", isShorts: true, istirahat: "2 menit",
-      tujuan: "Melatih paha depan dengan stabilitas tinggi tanpa risiko goyang.",
-      kesalahan: "Tumit terangkat dari papan pijakan saat posisi di bawah. Seluruh telapak kaki harus menempel penuh sepanjang gerakan."
+      id: 1, name: "Incline Dumbbell Press", sets: 3, reps: 12, unit: "rep", ytId: "8fXfwG4ftaQ", isShorts: false, istirahat: "90 dtk",
+      tujuan: "Menguatkan dada bagian atas.",
+      kesalahan: "Siku terlalu turun ke bawah, bikin bahu depan yang kerja duluan."
     },
     {
-      id: 2, name: "Seated Leg Curl", sets: 3, reps: 12, unit: "rep", ytId: "xdbEG3xGLI8", isShorts: true, istirahat: "90 dtk",
-      tujuan: "Isolasi paha belakang secara maksimal untuk mengimbangi dominasi paha depan dan menarik panggul kembali ke posisi netral.",
-      kesalahan: "Pantat atau pinggul terangkat dari bantalan kursi saat beban ditarik ke bawah. Punggung bawah dan pinggul wajib tetap menempel rapat pada sandaran sepanjang gerakan."
+      id: 2, name: "Rear Delt Fly (Machine)", sets: 3, reps: 15, unit: "rep", ytId: "7tgx6QHB0-A", isShorts: true, istirahat: "60 dtk",
+      tujuan: "Menguatkan bahu belakang dan target utama koreksi asimetri & postur.",
+      kesalahan: "Beban terlalu berat sampai punggung ikut membungkuk maju."
     },
     {
-      id: 3, name: "Seated Calf Raise", sets: 3, reps: 20, unit: "rep", ytId: "ar8nav0jGoE", isShorts: true, istirahat: "60 dtk",
-      tujuan: "Melatih otot betis bagian dalam agar kaki terlihat proporsional dari samping.",
-      kesalahan: "Gerakan setengah-setengah. Turunkan tumit sedalam mungkin hingga betis tertarik, lalu jinjit setinggi mungkin."
+      id: 3, name: "Dumbbell Shoulder Press", sets: 3, reps: 10, unit: "rep", ytId: "k6tzKisR3NY", isShorts: true, istirahat: "90 dtk",
+      tujuan: "Menguatkan bahu secara keseluruhan.",
+      kesalahan: "Punggung bawah melengkung berlebihan."
     },
     {
-      id: 4, name: "Standing Cable Crunch", sets: 3, reps: 15, unit: "rep", ytId: "K2m0jj6RfYg", isShorts: true, istirahat: "60 dtk",
-      tujuan: "Memperkuat otot perut depan dari posisi berdiri dan melatih panggul untuk aktif tertarik ke belakang, melawan APT.",
-      kesalahan: "Menurunkan beban menggunakan engsel pinggul atau otot paha seperti membungkuk memberi hormat. Pinggul dan kaki wajib dikunci mati, tidak boleh bergerak mundur."
+      id: 4, name: "Triceps Pushdown", sets: 3, reps: 12, unit: "rep", ytId: "u36jNfqh8_U", isShorts: false, istirahat: "60 dtk",
+      tujuan: "Menguatkan otot lengan belakang (tricep).",
+      kesalahan: "Siku ikut maju-mundur — harusnya diam menempel di samping badan."
     },
   ];
 
   const SELESAI_INFO = {
-    senin:  { subtitle: "Latihan Senin · Upper A done ✓"  },
-    rabu:   { subtitle: "Latihan Rabu · Lower A done ✓"   },
-    jumat:  { subtitle: "Latihan Jumat · Upper B done ✓"  },
-    sabtu:  { subtitle: "Latihan Sabtu · Lower B done ✓"  },
+    rabu:   { subtitle: "Latihan Rabu · Selesai ✓"   },
+    jumat:  { subtitle: "Latihan Jumat · Selesai ✓"  },
+    minggu: { subtitle: "Latihan Minggu · Selesai ✓" },
   };
 
   function getUpcomingDate(dates) {
@@ -452,18 +427,16 @@
   }
 
   function getExercises(hari) {
-    if (hari === "rabu")  return RABU_EXERCISES;
-    if (hari === "jumat") return JUMAT_EXERCISES;
-    if (hari === "sabtu") return SABTU_EXERCISES;
-    return SENIN_EXERCISES;
+    if (hari === "jumat")  return JUMAT_EXERCISES;
+    if (hari === "minggu") return MINGGU_EXERCISES;
+    return RABU_EXERCISES;
   }
 
   function getHariFromHash() {
     const h = location.hash;
-    if (h.startsWith("#/rabu/"))  return "rabu";
-    if (h.startsWith("#/jumat/")) return "jumat";
-    if (h.startsWith("#/sabtu/")) return "sabtu";
-    return "senin";
+    if (h.startsWith("#/jumat/"))  return "jumat";
+    if (h.startsWith("#/minggu/")) return "minggu";
+    return "rabu";
   }
 
   function renderExercise(idNum, exercises) {
@@ -539,14 +512,13 @@
     if (hash === "#/" || hash === "") {
       showScreen("home");
     } else if (
-      hash === "#/senin/selesai"  ||
       hash === "#/rabu/selesai"   ||
       hash === "#/jumat/selesai"  ||
-      hash === "#/sabtu/selesai"
+      hash === "#/minggu/selesai"
     ) {
       showScreen("selesai");
     } else {
-      const m = hash.match(/^#\/(senin|rabu|jumat|sabtu)\/(\d+)$/);
+      const m = hash.match(/^#\/(rabu|jumat|minggu)\/(\d+)$/);
       if (m) {
         const hari  = m[1];
         const idNum = parseInt(m[2], 10);
